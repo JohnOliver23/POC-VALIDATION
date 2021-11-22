@@ -2,13 +2,13 @@ import React from "react";
 import GlobalStyle from "./styles/global";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
-import Routes from "./components/Routes";
+import ReactFormHooks from "./pages/react-form-hooks";
 
 function App() {
   return (
     <Router>
-      <Routes />
       <GlobalStyle />
+      <ReactFormHooks />
     </Router>
   );
 }
