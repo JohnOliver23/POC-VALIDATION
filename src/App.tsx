@@ -7,7 +7,6 @@ import ReactFormHooks from "./pages/react-form-hooks";
 function App() {
   return (
     <Router>
-      <GlobalStyle />
       <ReactFormHooks />
     </Router>
   );

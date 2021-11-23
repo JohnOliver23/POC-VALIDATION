@@ -6,8 +6,8 @@ export const FormContainer = styled.div`
   flex-wrap: wrap;
   margin: auto;
   width: 212px;
-`
+`;
 
 export const SubmitInput = styled.input`
   width: 50%;
-`
+`;

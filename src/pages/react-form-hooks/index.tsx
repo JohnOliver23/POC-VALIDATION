@@ -1,43 +1,71 @@
-import React from "react"
-import { useForm } from 'react-hook-form';
-import TextField from "./components/TextField";
+import React from "react";
+import { useForm } from "react-hook-form";
+import Controller from "./components/Controller";
+import Input from "./components/Input";
 
 import { FormContainer, SubmitInput } from "./styles";
 
 const defaultValues = {
-  nome: ""
+  email: "",
+  password: "",
 };
 
 let renderCount = 0;
 
 function ReactFormHooks() {
-  const { handleSubmit, control, register, reset } = useForm({ defaultValues });
-  const onSubmit = (data: any) => {alert(`${JSON.stringify(data)}\nRenderCount: ${renderCount}`)};
-  
+  const {
+    handleSubmit,
+    control,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm({ defaultValues });
+  const onSubmit = (data: any) => {
+    alert(`${JSON.stringify(data)}\nRenderCount: ${renderCount}`);
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renderCount++;
-  
+
   return (
     <FormContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          control={control}
-          register={register}
-          placeholder="Ex: Laura, Diego, etc."
-          label="Informe seu nome:"
-          type="text"
-          name="nome"
-          maxLength={10}
-          minLength={3}
-          required
+        <Controller
+          {...{
+            control,
+            register,
+            name: "email",
+            placeholder: "Email",
+            rules: {
+              required: "Campo obrigatório",
+            },
+            type: "email",
+            render: (props: JSX.IntrinsicAttributes) => <Input {...props} />,
+          }}
         />
+        <p>{errors.email?.message}</p>
+
+        <Controller
+          {...{
+            control,
+            register,
+            name: "password",
+            placeholder: "Password",
+            rules: {
+              required: "Senha obrigatória",
+            },
+            type: "number",
+            render: (props: JSX.IntrinsicAttributes) => <Input {...props} />,
+          }}
+        />
+        <p>{errors.password?.message}</p>
 
         <SubmitInput className="submit" type="submit" />
         <SubmitInput
           className="submit"
           value="Reset"
           type="button"
-          onClick={() => reset({ nome: "" }) }
+          onClick={() => reset({ email: "", password: "" })}
         />
       </form>
     </FormContainer>

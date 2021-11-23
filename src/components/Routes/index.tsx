@@ -1,11 +1,15 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import FormikModule from "../../pages/formik";
+import ReactFormHooks from "../../pages/react-form-hooks";
 
 const Routes: React.FC = () => (
-  <Switch>
-    <Route path="/" exact component={FormikModule} />
-  </Switch>
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" exact component={FormikModule} />
+      <Route path="/react-hooks" exact component={ReactFormHooks} />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default Routes;
