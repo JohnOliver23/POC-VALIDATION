@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Controller from "./components/Controller";
-import Input from "./components/Input";
+import Input from "../../components/Input";
+import styles from "../../components/SignIn/styles.module.scss";
 
 import { FormContainer, SubmitInput } from "./styles";
 
@@ -28,47 +29,56 @@ function ReactFormHooks() {
   renderCount++;
 
   return (
-    <FormContainer>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          {...{
-            control,
-            register,
-            name: "email",
-            placeholder: "Email",
-            rules: {
-              required: "Campo obrigatório",
-            },
-            type: "email",
-            render: (props: JSX.IntrinsicAttributes) => <Input {...props} />,
-          }}
-        />
-        <p>{errors.email?.message}</p>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h1>Faça Login</h1>
 
-        <Controller
-          {...{
-            control,
-            register,
-            name: "password",
-            placeholder: "Password",
-            rules: {
-              required: "Senha obrigatória",
-            },
-            type: "number",
-            render: (props: JSX.IntrinsicAttributes) => <Input {...props} />,
-          }}
-        />
-        <p>{errors.password?.message}</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.row}>
+            <Controller
+              {...{
+                control,
+                register,
+                name: "email",
+                placeholder: "Email",
+                rules: {
+                  required: "Campo obrigatório",
+                },
+                type: "email",
+                render: (props: JSX.IntrinsicAttributes) => (
+                  <Input {...props} error={errors.email?.message} />
+                ),
+              }}
+            />
+          </div>
+          <div className={styles.row}>
+            <Controller
+              {...{
+                control,
+                register,
+                name: "password",
+                placeholder: "Password",
+                rules: {
+                  required: "Senha obrigatória",
+                },
+                type: "number",
+                render: (props: JSX.IntrinsicAttributes) => (
+                  <Input {...props} error={errors.password?.message} />
+                ),
+              }}
+            />
+          </div>
 
-        <SubmitInput className="submit" type="submit" />
-        <SubmitInput
-          className="submit"
-          value="Reset"
-          type="button"
-          onClick={() => reset({ email: "", password: "" })}
-        />
-      </form>
-    </FormContainer>
+          <SubmitInput className="submit" type="submit" />
+          <SubmitInput
+            className="submit"
+            value="Reset"
+            type="button"
+            onClick={() => reset({ email: "", password: "" })}
+          />
+        </form>
+      </div>
+    </div>
   );
 }
 

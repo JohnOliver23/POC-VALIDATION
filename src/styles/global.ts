@@ -20,7 +20,7 @@ export default createGlobalStyle`
   outline: 0;
 }
 body {
-  background: var(--color-gray-light);
+  background: var(--color-gray-light) !important;
   color: #333;
   -webkit-font-smoothing: antialiased;
   margin-top: 4rem;
