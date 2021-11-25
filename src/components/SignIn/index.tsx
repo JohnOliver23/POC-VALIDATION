@@ -11,7 +11,9 @@ const SignIn: React.FC = () => {
     email: Yup.string()
       .required("O email é obrigatório")
       .email("Informe um email válido"),
-    password: Yup.string().required("A senha é obrigatória"),
+    password: Yup.string()
+      .required("A senha é obrigatória")
+      .min(5, "Digite no minimo 5 digitos"),
   });
 
   //Formik
@@ -25,8 +27,6 @@ const SignIn: React.FC = () => {
       alert(`${values.email} logado`);
     },
   });
-
-  console.log(formik);
 
   return (
     <div className={styles.container}>

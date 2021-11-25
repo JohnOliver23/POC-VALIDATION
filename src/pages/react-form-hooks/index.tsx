@@ -4,14 +4,12 @@ import Controller from "./components/Controller";
 import Input from "../../components/Input";
 import styles from "../../components/SignIn/styles.module.scss";
 
-import { FormContainer, SubmitInput } from "./styles";
+import { SubmitInput } from "./styles";
 
 const defaultValues = {
   email: "",
   password: "",
 };
-
-let renderCount = 0;
 
 function ReactFormHooks() {
   const {
@@ -22,11 +20,8 @@ function ReactFormHooks() {
     formState: { errors },
   } = useForm({ defaultValues });
   const onSubmit = (data: any) => {
-    alert(`${JSON.stringify(data)}\nRenderCount: ${renderCount}`);
+    alert(`${data.email} logado`);
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  renderCount++;
 
   return (
     <div className={styles.container}>
@@ -41,9 +36,7 @@ function ReactFormHooks() {
                 register,
                 name: "email",
                 placeholder: "Email",
-                rules: {
-                  required: "Campo obrigatório",
-                },
+                rules: {},
                 type: "email",
                 render: (props: JSX.IntrinsicAttributes) => (
                   <Input {...props} error={errors.email?.message} />
@@ -56,12 +49,10 @@ function ReactFormHooks() {
               {...{
                 control,
                 register,
+                rules: {},
                 name: "password",
                 placeholder: "Password",
-                rules: {
-                  required: "Senha obrigatória",
-                },
-                type: "number",
+                type: "password",
                 render: (props: JSX.IntrinsicAttributes) => (
                   <Input {...props} error={errors.password?.message} />
                 ),

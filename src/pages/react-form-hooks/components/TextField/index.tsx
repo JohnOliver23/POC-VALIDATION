@@ -35,8 +35,6 @@ function InputController({
   //   name
   // });
 
-  // console.log(errors);
-
   switch (type) {
     case "text":
       rules = { ...rules };
