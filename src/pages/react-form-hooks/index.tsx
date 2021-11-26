@@ -1,10 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Controller from "./components/Controller";
-import Input from "../../components/Input";
 import styles from "../../components/SignIn/styles.module.scss";
-
 import { SubmitInput } from "./styles";
+import TextField from "./components/TextField";
 
 const defaultValues = {
   email: "",
@@ -30,7 +28,7 @@ function ReactFormHooks() {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.row}>
-            <Controller
+            <TextField
               {...{
                 control,
                 register,
@@ -38,14 +36,12 @@ function ReactFormHooks() {
                 placeholder: "Email",
                 rules: {},
                 type: "email",
-                render: (props: JSX.IntrinsicAttributes) => (
-                  <Input {...props} error={errors.email?.message} />
-                ),
+                errors,
               }}
             />
           </div>
           <div className={styles.row}>
-            <Controller
+            <TextField
               {...{
                 control,
                 register,
@@ -53,9 +49,7 @@ function ReactFormHooks() {
                 name: "password",
                 placeholder: "Password",
                 type: "password",
-                render: (props: JSX.IntrinsicAttributes) => (
-                  <Input {...props} error={errors.password?.message} />
-                ),
+                errors,
               }}
             />
           </div>

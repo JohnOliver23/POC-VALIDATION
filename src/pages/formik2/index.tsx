@@ -1,6 +1,6 @@
 import React from "react";
 import { useField, Form, FormikProps, Formik } from "formik";
-import Input from "../../components/Input";
+import InputText from "../../components/InputText";
 import styles from "../../components/SignIn/styles.module.scss";
 
 interface Values {
@@ -35,7 +35,7 @@ function MyTextField(props: any) {
 
   return (
     <>
-      <Input
+      <InputText
         {...field}
         {...props}
         error={meta.error && meta.touched ? meta.error : ""}

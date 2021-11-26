@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../components/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "../../components/Input";
+import InputText from "../../components/InputText";
 import styles from "./styles.module.scss";
 
 const SignIn: React.FC = () => {
@@ -35,7 +35,7 @@ const SignIn: React.FC = () => {
           <h1>Faça Login</h1>
 
           <div className={styles.row}>
-            <Input
+            <InputText
               label="Email"
               name="email"
               placeholder="Digite seu Email"
@@ -50,7 +50,7 @@ const SignIn: React.FC = () => {
           </div>
 
           <div className={styles.row}>
-            <Input
+            <InputText
               label="Senha"
               name="password"
               type="password"
