@@ -1,4 +1,3 @@
-import React from "react";
 import { useFormState, useWatch } from "react-hook-form";
 
 interface IController {
@@ -24,6 +23,7 @@ const Controller = ({
     control,
     name,
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { errors } = useFormState({
     control,
     name,

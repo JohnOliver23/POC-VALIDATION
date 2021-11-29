@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../components/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import InputText from "../../components/InputText";
+import InputText from "../../components/Input/InputText";
 import styles from "./styles.module.scss";
 
 const SignIn: React.FC = () => {

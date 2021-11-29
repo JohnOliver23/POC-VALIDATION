@@ -1,16 +1,14 @@
 import React from "react";
 import Controller from "../Controller";
-import InputText from "../../../../components/InputText";
-import InputCpf from "../../../../components/InputCpf";
-import InputCnpj from "../../../../components/InputCnpj";
-import { type } from "os";
-import { number } from "yup";
+import InputText from "../../../../components/Input/InputText";
+import InputCpf from "../../../../components/Input/InputCpf";
+import InputCnpj from "../../../../components/Input/InputCnpj";
 
 interface IInputProps {
   type: "text" | "number" | "email" | "password" | "cpf" | "cnpj";
   placeholder: string;
   label?: string;
-  name?: string;
+  name: string;
   control: any;
   register: any;
   required?: boolean;
@@ -24,7 +22,7 @@ function TextField({
   type = "text",
   placeholder,
   label,
-  name = "",
+  name,
   control,
   register,
   required,
@@ -44,22 +42,22 @@ function TextField({
         type: type,
         render: (props: JSX.IntrinsicAttributes) =>
           (type === "text" && (
-            <InputText {...props} error={errors[name]?.message} />
+            <InputText type={type} {...props} error={errors[name]?.message} />
           )) ||
           (type === "number" && (
-            <InputText {...props} error={errors[name]?.message} />
+            <InputText type={type} {...props} error={errors[name]?.message} />
           )) ||
           (type === "email" && (
-            <InputText {...props} error={errors[name]?.message} />
+            <InputText type={type} {...props} error={errors[name]?.message} />
           )) ||
           (type === "password" && (
-            <InputText {...props} error={errors[name]?.message} />
+            <InputText type={type} {...props} error={errors[name]?.message} />
           )) ||
           (type === "cpf" && (
-            <InputCpf {...props} error={errors[name].message} />
+            <InputCpf type={type} {...props} error={errors[name].message} />
           )) ||
           (type === "cnpj" && (
-            <InputCnpj {...props} error={errors[name]?.message} />
+            <InputCnpj type={type} {...props} error={errors[name]?.message} />
           )),
       }}
     />

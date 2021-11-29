@@ -8,7 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<InputProps> = (props: InputProps) => {
-  const { error } = props;
+  const { error, type } = props;
   const [value, setValue] = useState<any>(props.value || "");
 
   useEffect(() => {
@@ -28,6 +28,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
           props.onChange && props.onChange(e);
         }}
         value={value}
+        type={type}
       />
       <div className={styles.containerError}>
         {error && <p className={styles.errorText}>{error}</p>}

@@ -3,7 +3,6 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import FormikModule from "../../pages/formik";
 import Formik2 from "../../pages/formik2";
 import ReactFormHooks from "../../pages/react-form-hooks";
-import GlobalStyle from "../../styles/global";
 const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>

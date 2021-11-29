@@ -1,6 +1,6 @@
 import React from "react";
 import { useField, Form, FormikProps, Formik } from "formik";
-import InputText from "../../components/InputText";
+import InputText from "../../components/Input/InputText";
 import styles from "../../components/SignIn/styles.module.scss";
 
 interface Values {
@@ -11,7 +11,7 @@ interface Values {
 
 function MyTextField(props: any) {
   // this will return field props for an <input />
-  const [field, meta, helpers] = useField(props.name);
+  const [field, meta] = useField(props.name);
 
   switch (props.type) {
     case "text":

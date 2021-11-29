@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import styles from "../../components/SignIn/styles.module.scss";
-import { SubmitInput } from "./styles";
 import TextField from "./components/TextField";
+import Button from "../../components/Button";
 
 const defaultValues = {
   email: "",
@@ -15,8 +15,8 @@ function ReactFormHooks() {
     control,
     register,
     reset,
-    formState: { errors },
-  } = useForm({ defaultValues });
+    formState: { isValid, errors },
+  } = useForm({ mode: "onChange", defaultValues });
   const onSubmit = (data: any) => {
     alert(`${data.email} logado`);
   };
@@ -54,13 +54,15 @@ function ReactFormHooks() {
             />
           </div>
 
-          <SubmitInput className="submit" type="submit" />
-          <SubmitInput
-            className="submit"
-            value="Reset"
+          <Button disabled={!isValid} type="submit">
+            Entrar
+          </Button>
+          <Button
             type="button"
             onClick={() => reset({ email: "", password: "" })}
-          />
+          >
+            Reset
+          </Button>
         </form>
       </div>
     </div>
